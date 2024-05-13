@@ -1,0 +1,169 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: table;
+    height: 100%;
+    width: 100%;
+    background-color: #DFE1E5;
+    color: #ffffff;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    /* background-image is optional, setting the parameters
+       which will apply if one is selected by the user */
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    /* parent must use display: table for centering to work */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.content {
+    line-height: 1.4em;
+    display: inline-block;
+/*    margin: auto; to use with BLOCK elements, with fixed width */
+    padding: 30px 20px 20px 20px;
+    max-width: 600px;
+    background-color: #646569;
+}
+
+.banner-image {
+    /* Have the image be located a bit higher when displayed.
+       The padding bellow the image will remain 30px */
+    position: relative;
+    top: -10px;
+    padding-bottom: 20px;
+    max-width: 540px;
+    max-height: 360px;
+}
+
+#instructions {
+    padding-bottom: 30px;
+}
+
+#instructionstext {
+    color: #ffffff;
+    line-height: 1.4em;
+    max-height: 7em;
+    overflow-y: auto;
+}
+
+.login-field {
+    padding-bottom: 12px;
+}
+.login-field input {
+    height: 2.5em;
+    padding: 0 8px;
+}
+
+#user-agreement input {
+    vertical-align: middle;
+    font-size: 1em;
+}
+#user-agreement label {
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+.agreement-policy-link {
+    color: #FF8300;
+}
+
+#loginBox {
+    padding-top: 30px;
+}
+
+.button-box {
+    display: inline-block;
+}
+.button-box .button {
+    background-color: #FF8300;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    height: 30px;
+    padding: 3px 12px;
+    cursor: pointer;
+    line-height: 27px;
+}
+#errorbox {
+    color: #cc2b3a;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: left;
+    background-color: #ffd7db;
+    border-left: 5px solid #ff3649;
+    margin: 30px auto 10px;
+    padding-left: 10px;
+    width: 300px;
+}
+
+#errorbox img {
+    position: relative;
+    top: 2px;
+    height: 16px;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 40;
+}
+#policyOverlay {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+}
+
+#policyOverlay .policy-content {
+    display: inline-block;
+    min-width: 350px;
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #DFE1E5;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+#policyOverlay .policy-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DFE1E5;
+}
+#policyOverlay .policy-text {
+    max-width: 600px;
+    max-height: 400px;
+    padding: 15px;
+    overflow-y: auto;
+}
+#policyOverlay .button-row {
+    text-align: right;
+    padding-top: 15px;
+}
+#policyOverlay .button-box {
+    min-width: 80px
+}
+#policyOverlay .button-box .button {
+    text-align: center;
+}

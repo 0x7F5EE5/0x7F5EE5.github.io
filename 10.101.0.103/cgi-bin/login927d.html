@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from 10.101.0.103/cgi-bin/login?cmd=login&mac=02:e9:7f:8a:41:84&ip=10.101.39.119&essid=PlainvilleGuest&apname=MSP-RM505&apgroup=MiddleSchool&url=http%3A%2F%2Fwww.msftconnecttest.com%2Fredirect by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 19 Apr 2024 12:45:42 GMT -->
+<head>
+    <style>
+        html {
+            height: 100%;
+            }
+
+        body {
+    display: table;
+    height: 100%;
+    width: 100%;
+    background-color: #DFE1E5;
+    color: #ffffff;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    /* background-image is optional, setting the parameters
+       which will apply if one is selected by the user */
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    /* parent must use display: table for centering to work */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.content {
+    line-height: 1.4em;
+    display: inline-block;
+/*    margin: auto; to use with BLOCK elements, with fixed width */
+    padding: 30px 20px 20px 20px;
+    max-width: 600px;
+    background-color: #646569;
+}
+
+.banner-image {
+    /* Have the image be located a bit higher when displayed.
+       The padding bellow the image will remain 30px */
+    position: relative;
+    top: -10px;
+    padding-bottom: 20px;
+    max-width: 540px;
+    max-height: 360px;
+}
+
+#instructions {
+    padding-bottom: 30px;
+}
+
+#instructionstext {
+    color: #ffffff;
+    line-height: 1.4em;
+    max-height: 7em;
+    overflow-y: auto;
+}
+
+.login-field {
+    padding-bottom: 12px;
+}
+.login-field input {
+    height: 2.5em;
+    padding: 0 8px;
+}
+
+#user-agreement input {
+    vertical-align: middle;
+    font-size: 1em;
+}
+#user-agreement label {
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+.agreement-policy-link {
+    color: #FF8300;
+}
+
+#loginBox {
+    padding-top: 30px;
+}
+
+.button-box {
+    display: inline-block;
+}
+.button-box .button {
+    background-color: #FF8300;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    height: 30px;
+    padding: 3px 12px;
+    cursor: pointer;
+    line-height: 27px;
+}
+#errorbox {
+    color: #cc2b3a;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: left;
+    background-color: #ffd7db;
+    border-left: 5px solid #ff3649;
+    margin: 30px auto 10px;
+    padding-left: 10px;
+    width: 300px;
+}
+
+#errorbox img {
+    position: relative;
+    top: 2px;
+    height: 16px;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 40;
+}
+#policyOverlay {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+}
+
+#policyOverlay .policy-content {
+    display: inline-block;
+    min-width: 350px;
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #DFE1E5;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+#policyOverlay .policy-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DFE1E5;
+}
+#policyOverlay .policy-text {
+    max-width: 600px;
+    max-height: 400px;
+    padding: 15px;
+    overflow-y: auto;
+}
+#policyOverlay .button-row {
+    text-align: right;
+    padding-top: 15px;
+}
+#policyOverlay .button-box {
+    min-width: 80px
+}
+#policyOverlay .button-box .button {
+    text-align: center;
+}
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Portal Login</title>
+    
+    
+<script language="javascript" type="text/javascript">
+</script>
+</head>
+
+<body style="background-color:  ; ">
+    <div class="wrapper">
+        <div class="content" style="background-color:  ">
+            <img class="banner-image" style="" src='https://github.com/BrodySchneider/BrodySchneider.github.io/blob/main/hots/Plainville_Logo.png?raw=true'>
+
+            <div id="instructions" style="display: none;">
+                <div id="instructionstext" style="color:  ; "></div>
+            </div>
+            <form action="http://10.101.0.103/cgi-bin/login" id="regform" method="post" autocomplete="off">
+        		<div id="registered" style="">
+
+                    <div class="login-field">
+                        <input type="text" id="user" name="user" placeholder="Username" size="25" onKeyPress="if(event && event.keyCode == 13){validateLogin();return false;}" />
+                    </div>
+                    <div class="login-field">
+                        <input type="password" id="password" name="password" placeholder="Password" size="25" onKeyPress="if(event && event.keyCode == 13){validateLogin();return false;}" />
+                    </div>
+                    <div id="fqdnbox" style="display: none"></div>
+                </div>
+
+                <div id="guest" style="display: none">
+                    <div id="emailbox" class="login-field">
+                        <label for="email" accesskey="e">Email: </label>
+                        <input type="text" id="email" name="email" placeholder="example@host.com" size="25" onKeyPress="if(event && event.keyCode == 13){validateLogin();return false;}" />
+                    </div>
+                </div>
+
+                <input type="hidden" name="cmd" value="authenticate" />
+
+                <div id="user-agreement" style="">
+                    <input type="checkbox" id="agreement_agree" name="agreementAck" value="Accept" onclick="CpUa.show_forms(true)" />
+                    <label for="agreement_agree" class="agreement-policy-label" style="color:  ; ">
+                        I accept the <a class="agreement-policy-link" style="color: #0D5999; " href="javascript:void(0)" onclick="showPolicy(true); return false;">terms and conditions</a>
+                    </label>
+                </div>
+                <div id="loginBox" style="">
+                    <a class="button-box login" href="javascript:void(0)" onclick="validateLogin();return false;">
+                        <div name="login" class="button" style="color:  ; background-color: #0D5999; ">Sign in</div>
+                    </a>
+                </div>
+            </form>
+            <div style="display: none">
+                <form action="http://10.101.0.103/cgi-bin/login" id="only_aup_form" method="post" title="">
+                <input type="hidden" name="accept_aup" value="accept_aup" />
+                <input type="hidden" name="requested_url" value="" />
+                </form>
+            </div>
+            <div id="errorbox" style="display: none">
+                <img src="https://github.com/BrodySchneider/BrodySchneider.github.io/blob/main/hots/alert-login-page.png?raw=true"/>
+                <span id="failreason">
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="policyOverlay" style="display:none;">
+        <div class="wrapper">
+            <div class="policy-content">
+                <div class ="policy-title">
+                    Terms and Conditions
+                </div>
+                <div class ="policy-text">
+                    Plainville Community Schools provides electronic information systems for improving teaching, learning, and managing. These systems shall be used by members of the school community in accordance with policy and procedures established by the school district and laws enacted by state and federal governments. The following acceptable use policy (AUP) applies to supervised and independent use of all forms of technology. It does not attempt to articulate all access scenarios and user behaviors.<br>
+<br>
+For the purposes of this AUP, the definition of information systems is any configuration of hardware and software, which provides users access to information stored electronically. The configuration can be a single unit or multiple units networked together. Networks include computer hardware, operating system software, application software, and stored text and data files, regardless of source and content.<br>
+<br>
+Users shall be defined as any person who utilizes these information networks. Users include all students, district employees and members of the Board of Education. It may also include other persons outside of these groups who, in the course of using district facilities, require access to the systems.<br>
+<br>
+The Plainville Board of Education expects all users of its technologies and electronic information systems to demonstrate responsible, courteous behaviors. Responsible behavior includes abiding by the law and the terms of the AUP with regard to privacy, confidentiality, security, and intellectual property.<br>
+<br>
+Computers, computer files, the e-mail system, software furnished to users and other pieces of the school's information network are school district property. Students should not consider any of their use of computers to be private, including all electronic communications. Use of passwords to gain access to the school"s information systems does not imply privacy in that use. There should be no expectation of privacy in aspects of computer use. The school district has the right but is not required to monitor any and all aspects of its information systems, including all materials students create, store, send or receive.<br>
+<br>
+The Superintendent of Schools or his/her designee will be responsible for implementing this policy, establishing procedures and guidelines, and supervising access privileges. Such guidelines shall be used to enforce the measures to block or filter Internet access and to preserve the students' and staff's rights to examine and use information to meet the educational goals and objectives of the Plainville Community School District.<br>
+<br>
+Violations of this policy may result in revocation of access to and privileges relating to use of the information systems and networks. Encouraging, allowing, or ignoring student use of the computer resources in a manner contrary to this policy is strictly prohibited. Violations of this policy by students may result in disciplinary action, up to and including suspension and/or expulsion. Violations may also result in civil and criminal liability. Students will be responsible for any losses, costs or damages incurred by the school district as a result of unauthorized use or intentional destruction of its information network or pieces. <br>
+<br>
+Legal Reference:<br>
+17 U.S.C. § 101 et. seq., The Copyright Act<br>
+20 U.S.C. §1232g Family Education Rights and Privacy Act (FERPA)<br>
+20 U.S.C. §1400 et. seq., Individuals with Disabilities Education Act<br>
+C.G.S. §10-15b Access to student records<br>
+C.G.S. §53a-182b through §53a-183, Harassment<br>
+C.G.S. §53a-251 et. seq., Computer Crime<br>
+                </div>
+                <div class="button-row">
+                    <a class="button-box" href="javascript:void(0)" onclick="showPolicy(false);return false;">
+                        <div name="okPolicy" class="button" style="color:  ; background-color: #0D5999; ">Close</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" style="display:none;"></div>
+</body>
+
+<!-- Mirrored from 10.101.0.103/cgi-bin/login?cmd=login&mac=02:e9:7f:8a:41:84&ip=10.101.39.119&essid=PlainvilleGuest&apname=MSP-RM505&apgroup=MiddleSchool&url=http%3A%2F%2Fwww.msftconnecttest.com%2Fredirect by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 19 Apr 2024 12:45:42 GMT -->
+</html>

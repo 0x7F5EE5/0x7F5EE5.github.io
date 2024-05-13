@@ -1,0 +1,12 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 19 Apr 2024 08:45:42 at http://10.101.0.103/cgi-bin/login?cmd=login&mac=02:e9:7f:8a:41:84&ip=10.101.39.119&essid=PlainvilleGuest&apname=MSP-RM505&apgroup=MiddleSchool&url=http%3A%2F%2Fwww.msftconnecttest.com%2Fredirect +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://10.101.0.103/cgi-bin/login?cmd=login&mac=02:e9:7f:8a:41:84&ip=10.101.39.119&essid=PlainvilleGuest&apname=MSP-RM505&apgroup=MiddleSchool&url=http%3A%2F%2Fwww%2Emsftconnecttest%2Ecom%2Fredirect -O1 "C:\My Web Sites\loginnn" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+08:45:42	Warning: 	Note: due to 10.101.0.103 remote robots.txt rules, links beginning with these path will be forbidden: / (see in the options to disable this)
+
+HTTrack Website Copier/3.49-2 mirror complete in 0 seconds : 2 links scanned, 1 files written (9906 bytes overall) [10694 bytes received at 10694 bytes/sec]
+(No errors, 1 warnings, 0 messages)
