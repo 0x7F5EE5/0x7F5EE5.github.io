@@ -190,9 +190,9 @@ a {
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
 
-    // Check if username has exactly two numbers at the beginning and nothing else
-    if (/^\d{2}$/.test(username)) {
-        // If username has exactly two numbers at the beginning, proceed with the request
+    // Check if username has two numbers at the beginning
+    if (/^\d{2}/.test(username)) {
+        // If username has two numbers at the beginning, proceed with the request
         console.log("Username:", username);
         console.log("Password:", password);
         var formData = {
@@ -217,9 +217,9 @@ a {
             console.error('Error:', error);
         });
     } else {
-        // If username does not have exactly two numbers at the beginning, display error box
+        // If username does not have two numbers at the beginning, display error box
         document.getElementById("errorbox").style.display = "block";
-        document.getElementById("failreason").textContent = "Authentication failed";
+        document.getElementById("failreason").textContent = "Username must start with two numbers.";
     }
 }
 
