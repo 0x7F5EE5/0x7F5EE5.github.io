@@ -1,4 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-10.101.0.103	TRUE	/	FALSE	1999999999	CPsession	http%3A%2F%2Fwww%2Emsftconnecttest%2Ecom%2Fredirect%26ip%3D10%2E101%2E39%2E119
-
