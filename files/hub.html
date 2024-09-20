@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Ensure cursor stays within viewport */
+    cursor: none; /* Hide the default cursor */
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.page {
+    display: none;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.active {
+    display: block;
+    opacity: 1;
+}
+
+.nav-button {
+    margin: 5px;
+    padding: 10px;
+    cursor: none; /* Hide the default cursor for these buttons */
+    background-color: #1e1e1e; /* Match button background with dark theme */
+    color: #e0e0e0; /* Match text color */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #333; /* Slightly lighter on hover */
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+}
+
+h1 {
+    background: linear-gradient(45deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Hide text color to show gradient */
+    text-fill-color: transparent;
+    display: inline-block;
+    padding-right: 240px;
+}
+
+p {
+    color: #cccccc; /* Lighter text color for paragraphs */
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #8A2BE2; /* Gradient match color */
+    background-color: #1e1e1e; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #8A2BE2; /* Gradient match color */
+    background-color: #1e1e1e; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #333; /* Slightly lighter on hover */
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+iframe {
+    margin-top: 20px;
+    width: 80%;
+    height: 500px;
+    border: 1px solid #333;
+    resize: both;
+    overflow: auto;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    background-color: #1e1e1e; /* Dark background */
+}
+
+::selection {
+    background-color: #1E90FF; /* Blue color for selection */
+    color: #ffffff; /* White text color for selection */
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch label {
+    display: flex;
+    align-items: center;
+    cursor: none;
+    position: relative;
+    padding-left: 40px;
+    font-size: 16px;
+}
+
+.switch label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: #7F7F7F; /* Gray background for switch */
+    transition: background-color 0.3s;
+}
+
+.switch input:checked + label::before {
+    background: linear-gradient(45deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient for switch */
+}
+
+.switch span {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cursor, .cursor-inner {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
+    z-index: 10000;
+}
+
+.cursor {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+}
+
+.cursor-inner {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+}
+
+.cursor.hover {
+    border-radius: 8px;
+}
+
+.cursor-inner.hover {
+    width: 18.75px;
+    height: 18.75px;
+    border-radius: 5px;
+}
+
+.cursor.scroll {
+    height: 40px;
+    width: 20px;
+    border-radius: 10px;
+}
+
+.cursor-inner.scroll {
+    width: 10px;
+    height: 10px;
+}
+
+.cursor.clicked {
+    width: 20px;
+    height: 20px;
+}
+
+.hide-cursor {
+    cursor: none; /* Hide the default cursor */
+}
+
+.mouse-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: solid #c0c0c0; /* Make the box invisible */
+    z-index: -2;
+}
+
+    </style>
+</head>
+<body class="fade-in">
+    <div>
+        <button class="nav-button hide-cursor" onclick="showPage('page1')">home</button>
+        <button class="nav-button hide-cursor" onclick="showPage('page2')">unblocker</button>
+        <button class="nav-button hide-cursor" onclick="showPage('page3')">options / tools</button>
+    </div>
+
+    <div id="page1" class="page active">
+        <h1>Byte Hub</h1>
+        <p>Everything you need, all in one place. <br><br></p>
+    </div>
+
+    <div id="page2" class="page">
+        <h1>Unblocker</h1>
+	<br>
+        <input type="text" id="urlInput" placeholder="Enter website URL" aria-label="Website URL" class="hide-cursor">
+        <button onclick="loadWebsite()" class="hide-cursor">Enter</button>
+        <button onclick="toggleFullscreen()" class="hide-cursor">Fullscreen</button>
+        <iframe id="websiteFrame" src="" title="Website Viewer" allowfullscreen></iframe>
+    </div>
+
+    <div id="page3" class="page">
+        <h1>Options / tools</h1>
+        <div class="switch hide-cursor">
+            <input type="checkbox" id="unsavedWarningSwitch" checked>
+            <label for="unsavedWarningSwitch"><span>Enable anti close tab</span></label>
+        </div>
+	<br>
+        <div style="margin-top: 20px;">
+            <input type="text" id="tabTitleInput" placeholder="Enter new tab title" aria-label="New tab title" class="hide-cursor">
+            <button onclick="changeTabTitle()" class="hide-cursor">Change tab title</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <input type="text" id="executeCodeInput" placeholder="Enter JavaScript to execute" aria-label="JavaScript to execute" class="hide-cursor">
+            <button onclick="executeCode()" class="hide-cursor">Execute code</button>
+        </div>
+    </div>
+
+    <div class="mouse-box"></div>
+    <div class="cursor"></div>
+    <div class="cursor-inner"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('fade-in');
+            addHoverEffects();
+        });
+
+        function addHoverEffects() {
+            const elements = [
+                ...document.querySelectorAll('.nav-button'),
+                document.getElementById('unsavedWarningSwitch'),
+                document.getElementById('tabTitleInput'),
+                document.querySelector('button[onclick="changeTabTitle()"]'),
+                document.getElementById('executeCodeInput'),
+                document.querySelector('button[onclick="executeCode()"]'),
+                document.getElementById('urlInput'),
+                document.querySelector('button[onclick="loadWebsite()"]'),
+                document.querySelector('button[onclick="toggleFullscreen()"]')
+            ];
+
+            elements.forEach(el => {
+                el.addEventListener('mouseover', () => {
+                    document.querySelector('.cursor').classList.add('hover');
+                    document.querySelector('.cursor-inner').classList.add('hover');
+                });
+                el.addEventListener('mouseleave', () => {
+                    document.querySelector('.cursor').classList.remove('hover');
+                    document.querySelector('.cursor-inner').classList.remove('hover');
+                });
+            });
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function loadWebsite() {
+    let url = document.getElementById('urlInput').value.trim();
+    if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;  // Add 'https://' if no protocol is specified
+    }
+    const iframe = document.getElementById('websiteFrame');
+    iframe.src = url;
+    iframe.style.display = 'block';
+}
+
+
+        function toggleFullscreen() {
+            const iframe = document.getElementById('websiteFrame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { /* Firefox */
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        function changeTabTitle() {
+            const title = document.getElementById('tabTitleInput').value;
+            document.title = title;
+        }
+
+        function executeCode() {
+            const code = document.getElementById('executeCodeInput').value;
+            if (code) {
+                try {
+                    eval(code);
+                } catch (e) {
+                    console.error('Error executing code:', e);
+                }
+            }
+        }
+
+        let warningEnabled = document.getElementById('unsavedWarningSwitch').checked;
+
+        window.addEventListener('beforeunload', (e) => {
+            if (warningEnabled) {
+                const message = 'Are you sure you want to leave?';
+                e.returnValue = message;
+                return message;
+            }
+        });
+
+        document.getElementById('unsavedWarningSwitch').addEventListener('change', (e) => {
+            warningEnabled = e.target.checked;
+        });
+
+        let cursor = document.querySelector('.cursor');
+        let cursorInner = document.querySelector('.cursor-inner');
+        let iCP = { x: 0, y: 0 };
+        let tP = { x: 0, y: 0 };
+        let tE = false;
+        let sT = null;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            cursorInner.style.left = `${e.clientX}px`;
+            cursorInner.style.top = `${e.clientY}px`;
+            tP.x = e.clientX;
+            tP.y = e.clientY;
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('clicked');
+            cursorInner.classList.add('clicked');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('clicked');
+            cursorInner.classList.remove('clicked');
+        });
+
+        document.addEventListener('wheel', () => {
+            if (!tE) {
+                cursor.classList.add('scroll');
+                cursorInner.classList.add('scroll');
+                clearTimeout(sT);
+                sT = setTimeout(() => {
+                    cursor.classList.remove('scroll');
+                    cursorInner.classList.remove('scroll');
+                }, 150);
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('clicked');
+            cursorInner.classList.remove('clicked');
+        });
+
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) {
+                iCP.y += 2;
+            } else {
+                iCP.y -= 2;
+            }
+        });
+
+        async function updateInnerCursor() {
+            const dx = (tP.x - iCP.x) * 0.2;
+            const dy = (tP.y - iCP.y) * 0.2;
+            iCP.x += dx;
+            iCP.y += dy;
+            cursorInner.style.left = `${iCP.x}px`;
+            cursorInner.style.top = `${iCP.y}px`;
+            requestAnimationFrame(updateInnerCursor);
+        }
+        requestAnimationFrame(updateInnerCursor);
+
+        function showTooltip(t) {
+            cursor.classList.add('tooltip');
+            cursor.innerHTML = t;
+            tE = true;
+        }
+
+        function hideTooltip() {
+            cursor.classList.remove('tooltip');
+            cursor.innerHTML = '';
+            tE = false;
+            iCP = { x: tP.x, y: tP.y };
+            cursor.style.left = `${tP.x}px`;
+            cursor.style.top = `${tP.y}px`;
+        }
+
+        function updateTooltip(t) {
+            cursor.innerHTML = t;
+        }
+    </script>
+</body>
+</html>
