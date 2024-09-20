@@ -113,7 +113,21 @@ document.getElementById('downloadButton').addEventListener('click', function () 
     document.body.appendChild(link);
     link.click();
 
-    // Remove the link after the click
+    // Remove the link after the click otherdownload
+    document.body.removeChild(link);
+});
+
+document.getElementById('otherdownload').addEventListener('click', function () {
+    // Create an invisible link element
+    const link = document.createElement('a');
+    link.href = '/files/hub.html'; // Specify the file path on the server
+    link.download = 'hub.html'; // Specify the name for the downloaded file
+
+    // Simulate a click on the link
+    document.body.appendChild(link);
+    link.click();
+
+    // Remove the link after the click otherdownload
     document.body.removeChild(link);
 });
 
