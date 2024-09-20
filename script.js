@@ -16,15 +16,10 @@ document.addEventListener('mousemove', (e) => {
     tP.y = e.clientY;
 });
 
-// Wait for the document to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-    // Get the body element
     var body = document.body;
-    
-    // Add the class to hide the cursor
     body.classList.add("hide-cursor");
 });
-
 
 document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseover', () => {
