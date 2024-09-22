@@ -104,30 +104,20 @@ function logVersion() {
 }
 
 document.getElementById('downloadButton').addEventListener('click', function () {
-    // Create an invisible link element
     const link = document.createElement('a');
-    link.href = '/files/hub.html'; // Specify the file path on the server
-    link.download = 'hub.html'; // Specify the name for the downloaded file
-
-    // Simulate a click on the link
+    link.href = '/files/hub.html';
+    link.download = 'hub.html';
     document.body.appendChild(link);
     link.click();
-
-    // Remove the link after the click otherdownload
     document.body.removeChild(link);
 });
 
 document.getElementById('otherdownload').addEventListener('click', function () {
-    // Create an invisible link element
     const link = document.createElement('a');
-    link.href = '/files/EaglercraftX_1.8.html'; // Specify the file path on the server
-    link.download = 'EaglercraftX_1.8.html'; // Specify the name for the downloaded file
-
-    // Simulate a click on the link
+    link.href = '/files/EaglercraftX_1.8.html';
+    link.download = 'EaglercraftX_1.8.html';
     document.body.appendChild(link);
     link.click();
-
-    // Remove the link after the click otherdownload
     document.body.removeChild(link);
 });
 
