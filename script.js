@@ -62,6 +62,12 @@ window.addEventListener('wheel', (e) => {
     }
 });
 
+window.onload = function() {
+    if (window.location.protocol === 'file:') {
+      
+    }
+};
+
 async function updateInnerCursor() {
     const cursorInner = document.querySelector('.cursor-inner');
     const dx = (tP.x - iCP.x) * 0.2;
@@ -81,6 +87,18 @@ function showTooltip(t) {
     tE = true;
 }
 
+function getOS() {
+    const platform = window.navigator.platform;
+
+    if (platform.includes('Win')) return 'Windows';
+    if (platform.includes('Mac')) return 'macOS';
+    if (platform.includes('Linux')) return 'Linux';
+    if (platform.includes('iPhone') || platform.includes('iPad')) return 'iOS';
+    if (platform.includes('Android')) return 'Android';
+
+    return 'Unknown OS';
+}
+
 function hideTooltip() {
     const cursor = document.querySelector('.cursor');
     cursor.classList.remove('tooltip');
@@ -96,29 +114,22 @@ function updateTooltip(t) {
     cursor.innerHTML = t;
 }
 
-function logVersion() {
-    fetch('/api/version.json')
-        .then(response => response.json())
-        .then(data => console.log(`Cursor.js loaded with version ${data.version}`))
-        .catch(error => console.error('Error fetching version:', error));
+document.getElementById('downloadButton').addEventListener('click', function () {
+
+    const link = document.createElement('a');
+    link.href = 'hub.html';
+    link.download = 'hub.html';
+
+
+    document.body.appendChild(link);
+    link.click();
+
+
+    document.body.removeChild(link);
+});
+
+const os = getOS();
+if (os === 'macOS') {
+    window.location.href = "calc.html";    // if they are using macOS, pretend to be a calculator website
 }
 
-document.getElementById('downloadButton').addEventListener('click', function () {
-    const link = document.createElement('a');
-    link.href = '/files/hub.html';
-    link.download = 'hub.html';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
-
-document.getElementById('otherdownload').addEventListener('click', function () {
-    const link = document.createElement('a');
-    link.href = '/files/EaglercraftX_1.8.html';
-    link.download = 'EaglercraftX_1.8.html';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
-
-logVersion();
