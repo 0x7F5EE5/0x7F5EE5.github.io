@@ -92,6 +92,17 @@
                 display.value = 'Error';
             }
         }
+        let lastWidth = window.innerWidth;
+        let lastHeight = window.innerHeight;
+
+        setInterval(() => {
+            if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+            console.log('I can see you');
+            lastWidth = window.innerWidth;
+            lastHeight = window.innerHeight;
+            window.location.href = "/idiot/index.html";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
