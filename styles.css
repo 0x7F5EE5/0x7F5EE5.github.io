@@ -1,4 +1,3 @@
-/* Prevent text selection */
 body {
     background-color: #121212;
     color: #E0E0E0;
@@ -9,49 +8,65 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    cursor: none; /* Hide default cursor */
-    user-select: none; /* Prevent text selection */
+    cursor: none;
+    user-select: none;
 }
 
-/* General dark mode styling */
 .container {
     text-align: center;
     max-width: 600px;
 }
 
-/* Title styling with gradient */
 .title {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient */
-    -webkit-background-clip: text; /* Vendor prefix for WebKit browsers */
-    background-clip: text; /* Standard property */
-    -webkit-text-fill-color: transparent; /* Vendor prefix for WebKit browsers */
-    text-fill-color: transparent; /* Standard property for future compatibility */
+    background: linear-gradient(90deg, #1E90FF, #8A2BE2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
 }
 
-/* Description styling */
 .description {
     font-size: 1.2rem;
     margin-bottom: 30px;
     line-height: 1.6;
 }
 
-/* Button styling with outline */
+.credits {
+    color: #6A6A6A;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    padding: 10px;
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.credits:hover {
+    color: #ffffff;
+    text-shadow: 
+        0 0 15px #8000ff,
+        0 0 30px #8000ff,
+        0 0 45px #8000ff,
+        0 0 60px #8000ff;
+}
+
 .dark-button {
     padding: 15px 30px;
     font-size: 1rem;
-    color: white; /* Default text color */
-    background-color: transparent; /* Set background to transparent */
-    border: 2px solid #8A2BE2; /* Outline color */
+    color: white;
+    background-color: transparent;
+    border: 2px solid #8A2BE2;
     border-radius: 5px;
-    cursor: none; /* Hide default cursor */
+    cursor: none;
     position: relative;
-    overflow: hidden; /* Clip the gradient */
-    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    overflow: hidden;
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Create the gradient background */
 .dark-button::before {
     content: '';
     position: absolute;
@@ -59,29 +74,27 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient */
-    z-index: -1; /* Place behind the button */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth fade in */
+    background: linear-gradient(90deg, #1E90FF, #8A2BE2);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* Button hover effects */
 .dark-button:hover {
-    color: #121212; /* Text color when hovered */
-    border-color: transparent; /* Hide outline on hover */
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8); /* Glowing effect */
+    color: #121212;
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
 }
 
 .dark-button:hover::before {
-    opacity: 1; /* Fade in gradient on hover */
+    opacity: 1;
 }
 
-/* Link styling for Other Files */
 .other-files {
     display: block;
-    margin-top: 10px; /* Reduced top margin */
-    font-size: 0.8rem; /* Smaller font size */
-    color: #175B9E; /* Match the button gradient */
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #175B9E;
     text-decoration: none;
     transition: color 0.3s ease;
     text-decoration-line: underline;
@@ -89,10 +102,9 @@ body {
 }
 
 .other-files:hover {
-    color: #1E90FF; /* Change color on hover */
+    color: #1E90FF;
 }
 
-/* Custom cursor styles */
 .cursor, .cursor-inner {
     position: absolute;
     border-radius: 50%;
@@ -104,7 +116,6 @@ body {
 .cursor {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -118,7 +129,6 @@ body {
 .cursor-inner {
     width: 15px;
     height: 15px;
-    border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -135,14 +145,14 @@ body {
 
 .cursor-inner.hover {
     width: 18.75px;
-    height: 18.75px;   
+    height: 18.75px;
     border-radius: 5px;
 }
 
 .cursor.scroll {
     height: 40px;
     width: 20px;
-    border-radius: 10px;    
+    border-radius: 10px;
 }
 
 .cursor-inner.scroll {
@@ -151,7 +161,7 @@ body {
 }
 
 .hover-hide-cursor:hover {
-  cursor: none;
+    cursor: none;
 }
 
 .cursor-inner.clicked {
