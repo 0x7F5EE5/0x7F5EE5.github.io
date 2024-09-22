@@ -138,6 +138,3 @@ window.onkeydown = function() {
 window.onbeforeunload = function() {
     return "Are you an idiot?";
 };
-
-
-proCreate()
