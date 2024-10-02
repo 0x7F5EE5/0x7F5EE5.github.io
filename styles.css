@@ -37,7 +37,12 @@ body {
 }
 
 .credits {
-  color: #6A6A6A;
+color: #ffffff;
+text-shadow: 
+    0 0 15px #8000ff,
+    0 0 30px #8000ff,
+    0 0 45px #8000ff,
+    0 0 60px #8000ff;
   font-size: 12px;
   position: fixed;
   bottom: 0;
