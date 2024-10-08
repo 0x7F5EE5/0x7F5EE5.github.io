@@ -117,7 +117,7 @@ function updateTooltip(t) {
 document.getElementById('downloadButton').addEventListener('click', function () {
 
     const link = document.createElement('a');
-    link.href = 'hub.html';
+    link.href = '/files/hub.html';
     link.download = 'hub.html';
 
 
