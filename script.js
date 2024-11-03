@@ -117,8 +117,8 @@ function updateTooltip(t) {
 document.getElementById('downloadButton').addEventListener('click', function () {
 
     const link = document.createElement('a');
-    link.href = '/files/byte 3.1.4.html';
-    link.download = 'byte 3.1.4.html';
+    link.href = '/files/byte3.1.4.html';
+    link.download = 'byte3.1.4.html';
 
 
     document.body.appendChild(link);
