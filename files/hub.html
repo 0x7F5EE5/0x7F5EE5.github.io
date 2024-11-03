@@ -3,254 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Byte</title>
+    <title>New Tab</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Ensure cursor stays within viewport */
-    cursor: none; /* Hide the default cursor */
-}
+            height: 961px;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            background-image: url("https://www.byte-portal.sbs/cubes.jpg"); /*peak web desinge 💯*/
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Ensure cursor stays within viewport */
+            cursor: none; /* Hide the default cursor */
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @-webkit-keyframes glow {
+          from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e600d7, 0 0 40px #db00e6, 0 0 50px #af00e6, 0 0 60px #c900e6, 0 0 70px #c000e6;
+          }
+          to {
+            text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+          }
+        }
+        .page {
+            display: none;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .active {
+            display: block;
+            opacity: 1;
+        }
+        .nav-bar {
+            background-color: rgba(0, 0, 0, 0.22);  /* im so good at this */
+            -webkit-backdrop-filter: blur(10px); /* blur, it looks awsome sauce */
+            backdrop-filter: blur(10px);
+            
+        }
+        
+        .nav-button {
+            margin: 5px;
+            margin-right: 14px;
+            padding: 10px;
+            cursor: none; /* make the cursor hidden on the buttons */
+            background-color: #161616;
+            color: #e0e0e0;
+            border-radius: 5px;
+            border: 1px solid #9a9a9a;
+            transition: background-color 0.3s, transform 0.3s;
+            
+        }
+        .nav-button:hover {
+            background-color: #555;
+        }
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+        h1 {
+            -webkit-text-stroke-width: 1px;       /* slight stroke on the text, just so it stands out against the background img */
+            -webkit-text-stroke-color: #3d3d3d;
+            background: linear-gradient(45deg, #ff00cc, #333399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding-right: 240px;
+            
+        }
+        p {
+            color: #cccccc;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #9B19B3;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-radius: 29px;
+        }
+        input[type="url"] {
+            border-radius: 29px;
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #9B19B3;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 8px;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        iframe {
+            margin-top: 20px;
+            width: 95%;
+            height: 800px;
+            border: 1px solid #333;
+            resize: both;
+            overflow: auto;
+            padding-bottom: 15px;
+            padding-right: 15px;
+            background-color: rgba(0, 0, 0, 0.73);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+	::selection {
+            background-color: #ff00cc;
+            color: #ffffff;            
+	}
 
-.fade-in {
-    animation: fadeIn 2s ease-in-out;
-}
+        .switch {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        .switch label {
+            display: flex;
+            align-items: center;
+            cursor: none;
+            position: relative;
+            padding-left: 40px;
+            font-size: 16px;
+        }
+        .switch label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px; 
+            border-radius: 12px;
+            background: #7F7F7F;
+            transition: background-color 0.3s;
+        }
+        .switch input:checked + label::before {
+            background: linear-gradient(45deg, #ff00cc, #333399);
+        }
+        .error-disabled {
+            opacity: 0;
+        }
+        .error-enabled {
+            color: red;
+        }
+        .switch span {
+            display: inline-block;
+            padding-left: 10px;
+        }
+        .centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .cursor, .cursor-inner {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
+            z-index: 10000;
+        }
+        .clear-log {
+            cursor: none;
+            padding: 10px 20px;
+        }
+        .cursor {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(3px);
+            position: fixed;
+            transform: translate(-50%, -50%);
+            z-index: 100000;
+        }
+        .cursor-inner {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            transform: translate(-50%, -50%);
+            z-index: 100000;
+        }
+        .cursor.hover {
+            border-radius: 8px;
+        }
+        .log {
+            background-color: rgba(0, 0, 0, 0.73);
+            width: 400px;
+            height: 382px;
+            color: #9B19B3;
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .trail { /* trail elements that i stole :100: */
+            position: absolute;
+            background-color: purple;
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.page {
-    display: none;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.active {
-    display: block;
-    opacity: 1;
-}
-
-.nav-button {
-    margin: 5px;
-    padding: 10px;
-    cursor: none; /* Hide the default cursor for these buttons */
-    background-color: #1e1e1e; /* Match button background with dark theme */
-    color: #e0e0e0; /* Match text color */
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.nav-button:hover {
-    background-color: #333; /* Slightly lighter on hover */
-}
-
-.nav-button:active {
-    transform: scale(0.95);
-}
-
-h1 {
-    background: linear-gradient(45deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* Hide text color to show gradient */
-    text-fill-color: transparent;
-    display: inline-block;
-    padding-right: 240px;
-}
-
-p {
-    color: #cccccc; /* Lighter text color for paragraphs */
-}
-
-input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #8A2BE2; /* Gradient match color */
-    background-color: #1e1e1e; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-}
-
-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 2px solid #8A2BE2; /* Gradient match color */
-    background-color: #1e1e1e; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-    transition: background-color 0.3s, transform 0.2s;
-    border-radius: 8px;
-}
-
-button:hover {
-    background-color: #333; /* Slightly lighter on hover */
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-iframe {
-    margin-top: 20px;
-    width: 80%;
-    height: 500px;
-    border: 1px solid #333;
-    resize: both;
-    overflow: auto;
-    padding-bottom: 15px;
-    padding-right: 15px;
-    background-color: #1e1e1e; /* Dark background */
-}
-
-::selection {
-    background-color: #1E90FF; /* Blue color for selection */
-    color: #ffffff; /* White text color for selection */
-}
-
-.switch {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.switch input {
-    display: none;
-}
-
-.switch label {
-    display: flex;
-    align-items: center;
-    cursor: none;
-    position: relative;
-    padding-left: 40px;
-    font-size: 16px;
-}
-
-.switch label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 12px;
-    background: #7F7F7F; /* Gray background for switch */
-    transition: background-color 0.3s;
-}
-
-.switch input:checked + label::before {
-    background: linear-gradient(45deg, #1E90FF, #8A2BE2); /* Blue to Purple gradient for switch */
-}
-
-.switch span {
-    display: inline-block;
-    padding-left: 10px;
-}
-
-.centered-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.cursor, .cursor-inner {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
-    z-index: 10000;
-}
-
-.cursor {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    position: fixed;
-    transform: translate(-50%, -50%);
-    z-index: 100000;
-}
-
-.cursor-inner {
-    width: 15px;
-    height: 15px;
-    background-color: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    position: fixed;
-    transform: translate(-50%, -50%);
-    z-index: 100000;
-}
-
-.cursor.hover {
-    border-radius: 8px;
-}
-
-.cursor-inner.hover {
-    width: 18.75px;
-    height: 18.75px;
-    border-radius: 5px;
-}
-
-.cursor.scroll {
-    height: 40px;
-    width: 20px;
-    border-radius: 10px;
-}
-
-.cursor-inner.scroll {
-    width: 10px;
-    height: 10px;
-}
-
-.cursor.clicked {
-    width: 20px;
-    height: 20px;
-}
-
-.hide-cursor {
-    cursor: none; /* Hide the default cursor */
-}
-
-.mouse-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: solid #c0c0c0; /* Make the box invisible */
-    z-index: -2;
-}
-
+            height: 5px; width: 5px;
+            border-radius: 28px;
+            
+            pointer-events: none;
+          }
+        .cursor-inner.hover {
+            width: 18.75px;
+            height: 18.75px;
+            border-radius: 5px;
+        }
+        .cursor.scroll {
+            height: 40px;
+            width: 20px;
+            border-radius: 10px;
+        }
+        .blur-div {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            
+        }
+        .cursor-inner.scroll {
+            width: 10px;
+            height: 10px;
+        }
+        .cursor.clicked {
+            width: 20px;
+            height: 20px;
+        }
+        .hide-cursor {
+            cursor: none; /* Hide the default cursor  */
+        }
+        .vers {
+            color: #646464;
+            font-size: 14px;
+            cursor: none;
+        }
+        
+        .vers:hover {
+            color: #812a81;
+            text-decoration-line: underline;
+        }
+        .creds {  /* awsome fucking glowing animation */
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+              -moz-animation: glow 1s ease-in-out infinite alternate;
+              animation: glow 1s ease-in-out infinite alternate;
+        }
+	.mouse-box {  /* prevent the real mouse cursor from appearing, took me ages to firgure out how to do this :sob: */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: solid #c0c0c0; 
+            z-index: -2;
+        }
+        
     </style>
 </head>
 <body class="fade-in">
-    <div>
-        <button class="nav-button hide-cursor" onclick="showPage('page1')">home</button>
-        <button class="nav-button hide-cursor" onclick="showPage('page2')">unblocker</button>
-        <button class="nav-button hide-cursor" onclick="showPage('page3')">options / tools</button>
+    <div class="nav-bar">
+        <button class="nav-button hide-cursor" onclick="showPage('page1')" id="page1-button">home</button>
+        <button class="nav-button hide-cursor" onclick="showPage('page2')" id="page2-button">unblocker</button>
+        <button class="nav-button hide-cursor" onclick="showPage('page3')" id="page3-button">options / tools</button>
     </div>
 
     <div id="page1" class="page active">
         <h1>Byte Hub</h1>
-        <p>Everything you need, all in one place. <br><br></p>
-    </div>
-
-    <div id="page2" class="page">
+        <br>
+        <a class="vers" id="update" href="https://byte-portal.sbs" onclick="downloadFile()"></a>
+        <p>Everything you need, all in one place.</p> <p class="creds">Developed by Brody S</p>
+    </div><div id="page2" class="page">
         <h1>Unblocker</h1>
 	<br>
-        <input type="text" id="urlInput" placeholder="Enter website URL" aria-label="Website URL" class="hide-cursor">
+        <input type="url" id="urlInput" placeholder="Enter website URL" aria-label="Website URL" class="hide-cursor">
         <button onclick="loadWebsite()" class="hide-cursor">Enter</button>
         <button onclick="toggleFullscreen()" class="hide-cursor">Fullscreen</button>
         <iframe id="websiteFrame" src="" title="Website Viewer" allowfullscreen></iframe>
@@ -270,18 +324,91 @@ iframe {
         <div style="margin-top: 20px;">
             <input type="text" id="executeCodeInput" placeholder="Enter JavaScript to execute" aria-label="JavaScript to execute" class="hide-cursor">
             <button onclick="executeCode()" class="hide-cursor">Execute code</button>
+            <button onclick="clearlog()" class="clear-log">clear log</button>
+            <br>
+            <br>
+            <div class="log" id="log"></div>
+            <br>
+            
+            
         </div>
     </div>
 
     <div class="mouse-box"></div>
-    <div class="cursor"></div>
-    <div class="cursor-inner"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-inner" id="cursor-in"></div>
 
     <script>
+        let current = "3.1.4"
+        
+        let gitVers = 'https://raw.githubusercontent.com/WebHost6/vers/refs/heads/main/version.txt';
+
+        let fileData = null;
+
+        fetch(gitVers)
+          .then((response) => {
+            if (response.status === 404) {
+              console.log("Error 404: The requested file was not found.");
+              return null; // Return null if the file is not found
+            } else {
+              return response.text(); // Convert response to text if it exists
+            }
+          })
+          .then((fileContents) => {
+            if (fileContents !== null) {
+              fileData = fileContents;
+              fileData = fileData.slice(0, -1);
+              console.log("File contents:", fileData);
+                if (current !== fileData)
+                {
+                    document.getElementById('update').innerText = "new version avalable (" + fileData + "), click here to update"
+                }
+            }
+          })
+          .catch((error) => {
+            fileData = "none";
+            console.error("There was an error fetching the file:", error);
+          });
+        
+        
+        
+        
+        //let version1 = " 3.1.3";
+        
+        
+        document.getElementById('websiteFrame').addEventListener('mouseover', () => {
+            document.getElementById('cursor').classList.remove('cursor');
+            document.getElementById('cursor-in').classList.remove('cursor-inner');
+        });
+        document.getElementById('websiteFrame').addEventListener('mouseout', () => {
+            document.getElementById('cursor').classList.add('cursor');
+            document.getElementById('cursor-in').classList.add('cursor-inner');
+        });
+        
+        
         document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.add('fade-in');
             addHoverEffects();
         });
+        
+        console.clear = function() {
+            clearlog()
+        }
+        
+        function addtolog(message, type)
+        {
+            document.getElementById('log').innerText += " " + message + "\n";
+        }
+        
+        
+        
+        console.log = function(...args) {
+            addtolog(args.join(' '));
+        }
+        
+        console.warn = function(...args) {
+            addtolog(args.join(' '));
+        }
 
         function addHoverEffects() {
             const elements = [
@@ -291,6 +418,7 @@ iframe {
                 document.querySelector('button[onclick="changeTabTitle()"]'),
                 document.getElementById('executeCodeInput'),
                 document.querySelector('button[onclick="executeCode()"]'),
+                document.getElementById('update'),
                 document.getElementById('urlInput'),
                 document.querySelector('button[onclick="loadWebsite()"]'),
                 document.querySelector('button[onclick="toggleFullscreen()"]')
@@ -307,23 +435,42 @@ iframe {
                 });
             });
         }
-
+        
+        
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
         }
+        
+        function isValidURL(url) {
+            try {
+                const formattedURL = url.startsWith('http://') || url.startsWith('https://') ? url : `http://${url}`;
+                new URL(formattedURL);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        function addEvent(obj, evt, fn) {
+            if (obj.addEventListener) {
+                obj.addEventListener(evt, fn, false);
+            }
+            else if (obj.attachEvent) {
+                obj.attachEvent("on" + evt, fn);
+            }
+        }
 
         function loadWebsite() {
-    let url = document.getElementById('urlInput').value.trim();
-    if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
-        url = 'https://' + url;  // Add 'https://' if no protocol is specified
-    }
-    const iframe = document.getElementById('websiteFrame');
-    iframe.src = url;
-    iframe.style.display = 'block';
-}
+            
+            let url = document.getElementById('urlInput').value.trim();
+            const iframe = document.getElementById('websiteFrame');
+            iframe.src = url;
+            iframe.style.display = 'block';
+            
+        }
 
 
         function toggleFullscreen() {
@@ -342,6 +489,10 @@ iframe {
         function changeTabTitle() {
             const title = document.getElementById('tabTitleInput').value;
             document.title = title;
+            document.getElementById('tabTitleInput').value = "";
+        }
+        function clearlog() {
+            document.getElementById('log').innerText = "";
         }
 
         function executeCode() {
@@ -351,8 +502,10 @@ iframe {
                     eval(code);
                 } catch (e) {
                     console.error('Error executing code:', e);
+                    addtolog(e, 3);
                 }
             }
+            document.getElementById('executeCodeInput').value = "";
         }
 
         let warningEnabled = document.getElementById('unsavedWarningSwitch').checked;
@@ -364,11 +517,19 @@ iframe {
                 return message;
             }
         });
-
-        document.getElementById('unsavedWarningSwitch').addEventListener('change', (e) => {
+        
+                document.getElementById('unsavedWarningSwitch').addEventListener('change', (e) => {
             warningEnabled = e.target.checked;
         });
-
+        
+        
+        function downloadFile() {
+            warningEnabled = false
+            const link = document.createElement('a');
+            link.href = 'https://byte-portal.sbs/files/hub.html';
+            link.download = 'hub.html';
+            link.click();
+          }
         let cursor = document.querySelector('.cursor');
         let cursorInner = document.querySelector('.cursor-inner');
         let iCP = { x: 0, y: 0 };
@@ -449,6 +610,77 @@ iframe {
         function updateTooltip(t) {
             cursor.innerHTML = t;
         }
+        
+        
+        // trail, shamelessly stolen from https://codepen.io/falldowngoboone/pen/PwzPYv
+        
+        let amnt = 12;
+        var dots = [],
+        mouse = {
+          x: 0,
+          y: 0
+        };
+
+        // The Dot object used to scaffold the dots
+        var Dot = function() {
+          this.x = 0;
+          this.y = 0;
+          this.node = (function(){
+            var n = document.createElement("div");
+            n.className = "trail";
+            n.id = "trail-el";
+            document.body.appendChild(n);
+            return n;
+          }());
+        };
+        // The Dot.prototype.draw() method sets the position of 
+          // the object's <div> node
+        Dot.prototype.draw = function() {
+          this.node.style.left = this.x + "px";
+          this.node.style.top = this.y + "px";
+        };
+
+        // Creates the Dot objects, populates the dots array
+        for (var i = 0; i < amnt; i++) {
+          var d = new Dot();
+          dots.push(d);
+        }
+
+        // This is the screen redraw function
+        function draw() {
+          // Make sure the mouse position is set everytime
+            // draw() is called.
+          var x = mouse.x,
+              y = mouse.y;
+
+          // This loop is where all the 90s magic happens
+          dots.forEach(function(dot, index, dots) {
+            var nextDot = dots[index + 1] || dots[0];
+
+            dot.x = x;
+            dot.y = y;
+            dot.draw();
+            x += (nextDot.x - dot.x) * .6;
+            y += (nextDot.y - dot.y) * .6;
+
+          });
+        }
+
+        addEventListener("mousemove", function(event) {
+          //event.preventDefault();
+          mouse.x = event.pageX;
+          mouse.y = event.pageY;
+        });
+
+        // animate() calls draw() then recursively calls itself
+          // everytime the screen repaints via requestAnimationFrame().
+        function animate() {
+          draw();
+          requestAnimationFrame(animate);
+        }
+
+        // And get it started by calling animate().
+        animate();
     </script>
 </body>
 </html>
