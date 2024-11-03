@@ -106,8 +106,8 @@ function logVersion() {
 document.getElementById('downloadButton').addEventListener('click', function () {
     // Create an invisible link element
     const link = document.createElement('a');
-    link.href = 'hub.html'; // Specify the file path on the server
-    link.download = 'hub.html'; // Specify the name for the downloaded file
+    link.href = 'byte 3.1.4.html'; // Specify the file path on the server
+    link.download = 'byte 3.1.4.html'; // Specify the name for the downloaded file
 
     // Simulate a click on the link
     document.body.appendChild(link);
