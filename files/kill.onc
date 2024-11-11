@@ -1,1 +1,0 @@
-{"Type":"UnencryptedConfiguration","NetworkConfigurations":[{"Metered":true,"Type":"WiFi","WiFi":{"AutoConnect":true,"Security":"None"},"NameServersConfigType":"Static","StaticIPConfig":{"NameServers":["38.175.197.10","66.94.105.229","213.109.163.210","92.60.37.102"]},"ProxySettings":{"Type":"Direct"}}]}
