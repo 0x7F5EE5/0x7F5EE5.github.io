@@ -39,7 +39,7 @@ body {
 
     height: 5px; width: 5px;
     border-radius: 28px;
-    
+    z-index: 1000;
     pointer-events: none;
   }
 .cursor-inner.hover {
