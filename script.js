@@ -1,10 +1,12 @@
+// -- custom cursor script, stolen from some furrys website but modded so much he probably wouldnt even recognize it -- \\
+
 let cursor = document.querySelector('.cursor');
 let cursorInner = document.querySelector('.cursor-inner');
 let tE = false;
 let sT = null;
 let iCP = { x: 0, y: 0 };
 let tP = { x: 0, y: 0 };
-let lastScrollY = window.scrollY;  // Track last known scroll position
+let lastScrollY = window.scrollY; 
 
 
 
@@ -66,8 +68,8 @@ async function updateInnerCursor() {
 }
 requestAnimationFrame(updateInnerCursor);
 
-console.log("what are you doing snooping around in here?")
-// Tooltip functions
+console.log("what are you doing snooping around in here?")  // fake1!!11
+// Tooltip functions, not sure what its for i didnt steal the tooltip thing from him just the cursor :sob:
 function showTooltip(t) {
     cursor.classList.add('tooltip');
     cursor.innerHTML = t;
@@ -92,7 +94,7 @@ function updateTooltip(t) {
 
 function addHoverEffects() {
     const elements = [
-        ...document.getElementById('id="nav-lnk" '),
+        ...document.getElementById('nav-lnk'),
         document.querySelectorAll('.cta-button')
     ];
 
@@ -117,7 +119,6 @@ function addHoverEffects() {
                 y: 0
             };
         
-        // The Dot object used to scaffold the dots
         var Dot = function() {
             this.x = 0;
             this.y = 0;
@@ -130,25 +131,23 @@ function addHoverEffects() {
             }());
         };
         
-        // The Dot.prototype.draw() method sets the position of 
-        // the object's <div> node
         Dot.prototype.draw = function() {
             this.node.style.left = this.x + "px";
             this.node.style.top = this.y + "px";
         };
         
-        // Creates the Dot objects, populates the dots array
+        // creates the Dot objects, populates the dots array
         for (var i = 0; i < amnt; i++) {
             var d = new Dot();
             dots.push(d);
         }
         
-        // This is the screen redraw function
+        // this is the screen redraw function
         function draw() {
             var x = mouse.x,
                 y = mouse.y;
         
-            // This loop is where all the 90s magic happens
+            // this loop is where all the magic happens :100:
             dots.forEach(function(dot, index, dots) {
                 var nextDot = dots[index + 1] || dots[0];
         
@@ -161,26 +160,23 @@ function addHoverEffects() {
         }
         
         addEventListener("mousemove", function(event) {
-            mouse.x = event.pageX;
-            mouse.y = event.pageY;
+            mouse.x = event.pageX - 3;  // it looked off center :sob:
+            mouse.y = event.pageY; 
         });
         
-        // Update mouse position on scroll to follow scroll offset
+        // update mouse when scroll, i had to add this myself because whoever made this was a dumbass
         let lastScrollY2 = window.scrollY;
         window.addEventListener('scroll', () => {
             const scrollDiff = window.scrollY - lastScrollY2;
             lastScrollY2 = window.scrollY;
         
-            // Adjust the mouse position for scrolling
             mouse.y += scrollDiff;
-            draw(); // Re-draw the trail to update the position immediately
+            draw(); // re-draw it to update
         });
         
-        // animate() calls draw() then recursively calls itself
         function animate() {
             draw();
             requestAnimationFrame(animate);
         }
         
-        // And get it started by calling animate().
         animate();
