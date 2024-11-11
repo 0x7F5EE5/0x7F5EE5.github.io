@@ -1,4 +1,43 @@
+const featureCards = document.querySelectorAll('.feature-card');
+const featureCardsContainer = document.querySelector('.feature-cards');
+
+featureCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        featureCardsContainer.classList.add('blur'); // Add blur class when hovering a card
+    });
+
+    card.addEventListener('mouseleave', () => {
+        featureCardsContainer.classList.remove('blur'); // Remove blur class when no card is hovered
+    });
+});
+
+
+
+
 // -- custom cursor script, stolen from some furrys website but modded so much he probably wouldnt even recognize it -- \\
+
+
+function addHoverEffects() {
+    const elements = [
+        ...document.querySelectorAll('.button'),
+        document.getElementById('nav-lnk')
+    ];
+
+    elements.forEach(el => {
+        el.addEventListener('mouseover', () => {
+            console.log("enter")
+            document.querySelector('.cursor').classList.add('hover');
+            document.querySelector('.cursor-inner').classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            document.querySelector('.cursor').classList.remove('hover');
+            document.querySelector('.cursor-inner').classList.remove('hover');
+        });
+    });
+}
+
+
+
 
 let cursor = document.querySelector('.cursor');
 let cursorInner = document.querySelector('.cursor-inner');
