@@ -1,4 +1,4 @@
-/* Reset and Dark Background */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #e0e0e0;
     
 }
-.mouse-box {  /* prevent the real mouse cursor from appearing, took me ages to firgure out how to do this :sob: */
+.mouse-box {
     position: absolute;
     top: 0;
     left: 0;
@@ -30,7 +30,7 @@ body {
     height: 20px;
 }
 .hide-cursor {
-    cursor: none; /* Hide the default cursor  */
+    cursor: none; /* hide cursor, again */
 }
 
 .trail { /* trail elements that i stole :100: */
@@ -176,7 +176,6 @@ body {
     color: #ffde22;
 }
 
-/* Community Section */
 .community {
     text-align: center;
     padding: 60px 20px;
