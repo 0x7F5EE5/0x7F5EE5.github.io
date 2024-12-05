@@ -153,6 +153,7 @@ body {
 
 /* Features Section */
 .features {
+    display: flex;
     text-align: center;
     padding: 60px 20px;
     background-color: #070707;
